@@ -1,0 +1,19 @@
+GitHub遇到的问题：
+1、文件创建git add一直保存不成功
+"由于本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以必须要让github仓库认证你SSH key，在此之前，必须要生成SSH key"
+在Git控制台输入命令ssh-keygen -t rsa -C "youremail@example.com" .其中要求输入可以直接按Enter跳过，运行如上命令之后，windows用户可以进入到 C:\Users\Administrator\.ssh 查看生成文件.
+第二步：登录你的github,然后访问：https://github.com/settings/ssh/new   key里面的内容来自于id_rsa.pub文件里的内容，复制过来即可.
+接下来，我直接进行了一些基本信息设置
+a、设置用户名：git  config -- global  user.name  '你再github上注册的用户名';
+b、设置用户邮箱：git  config -- global  user.email  '注册时候的邮箱';
+
+2、Git提交报错nothing added to commit but untracked files present
+将不想提交的文件写入到.gitgnore文件中。
+
+
+3、git warning: LF will be replaced by CRLF in 解决办法
+$ rm -rf .git  // 删除.git  
+$ git config --global core.autocrlf false  //禁用自动转换    
+然后重新执行
+$ git init    
+$ git add .  
